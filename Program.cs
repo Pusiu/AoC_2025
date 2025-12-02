@@ -2,14 +2,19 @@
 using System.Text.RegularExpressions;
 namespace AoC_2025
 {
-    class Program
+    partial class Program
     {
         static void Main(string[] args)
         {
-            var days = Assembly.GetExecutingAssembly()
-            .GetTypes()
-            .Where(x => typeof(Day).IsAssignableFrom(x) && !x.IsAbstract).Select(x => Activator.CreateInstance(x) as Day).OrderBy(x => int.Parse(Regex.Match(x.ToString(), @"\d+$").Value)).ToList();
-            days[^1].Run();            
+            Assembly.GetExecutingAssembly()
+                .GetTypes()
+                .Where(x => typeof(Day).IsAssignableFrom(x) && !x.IsAbstract)
+                .Select(x => Activator.CreateInstance(x) as Day)
+                .OrderBy(x => int.Parse(DayRegex().Match(x?.ToString() ?? "").Value))
+                .ToList().LastOrDefault()?.Run();
         }
+
+        [GeneratedRegex(@"\d+$")]
+        private static partial Regex DayRegex();
     }
 }
