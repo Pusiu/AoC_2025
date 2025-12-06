@@ -77,7 +77,7 @@ namespace AoC_2025
                 }
             }
 
-            return input.Replace("\r", "").Trim();
+            return input.Replace("\r", "");
         }
 
         public virtual string Part1(string input)
