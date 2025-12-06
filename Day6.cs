@@ -1,11 +1,9 @@
-using System.ComponentModel;
 using System.Text;
 
 namespace AoC_2025
 {
     public class Day6 : Day
     {
-        // [Test]
         public override string Part1(string input)
         {
             var inp = input.Split("\n", StringSplitOptions.RemoveEmptyEntries).Select(x => x.Split(" ", StringSplitOptions.RemoveEmptyEntries).ToArray()).ToArray();
